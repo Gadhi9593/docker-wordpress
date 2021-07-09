@@ -21,4 +21,5 @@ docker service ls
 
 wordpress installation will be hosted in the port localhost:9593
 
-##NOTE : For Doubts see the Pics folder-same repository
+
+## NOTE : For Doubts see the Pics folder-same repository
