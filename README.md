@@ -1,7 +1,7 @@
 # These steps for Ubuntu machines
 clone the Repository
 
-install docker and docker swarm -- bash dockerinstall.sh
+install docker and docker swarm -- bash docker.sh
 
 check nodes are clusteres or not with 
 
