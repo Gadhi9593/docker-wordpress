@@ -1,0 +1,51 @@
+version: '3'
+
+networks:
+  srinu_network:
+volumes:
+  srinu_vol:
+
+services:
+  # Database Service-1
+  db:
+    image: mysql
+    volumes:
+      - srinu_vol:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: srinu
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: gadhi
+      MYSQL_PASSWORD: gadhi
+    networks:
+      - srinu_network
+      
+  # phpmyadmin Service-2
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: srinu
+    networks:
+      - srinu_network
+      
+  # Wordpress Service-3
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress
+    ports:
+      - '9593:80'
+    restart: always
+    volumes: ['srinu_vol:/var/www/html']
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: gadhi
+      WORDPRESS_DB_PASSWORD: gadhi
+    networks:
+      - srinu_network
