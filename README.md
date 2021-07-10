@@ -11,7 +11,9 @@ For wordpress installation in the Docker
 
 run compose.yaml 
 
-docker stack deploy -c compose.yml wordpressstack
+docker stack deploy -c compose.yml wordpressstack   or   docker-compose up--to services 
+
+to shutdown use ---  docker-compose down
 
 check stack deployed or not correctly
 
